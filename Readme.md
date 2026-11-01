@@ -10,6 +10,27 @@ The project focuses on engineering reliable AI agents rather than building a sim
   <strong>Python · FastAPI · PostgreSQL · SQLAlchemy · OpenAI · Docker</strong>
 </p>
 
+> **Status:** Under active development. See the [Development Roadmap](#development-roadmap) for progress.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Capabilities](#key-capabilities)
+- [System Architecture](#system-architecture)
+- [Agent Execution Lifecycle](#agent-execution-lifecycle)
+- [Technology Stack](#technology-stack)
+- [Database Design](#database-design)
+- [Agent Tools](#agent-tools)
+- [Reliability & Security Design](#reliability--security-design)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [API Usage](#api-usage)
+- [Testing](#testing)
+- [Development Roadmap](#development-roadmap)
+- [Engineering Principles](#engineering-principles)
+
 ---
 
 ## Overview
@@ -275,10 +296,12 @@ The project is designed to address the following engineering challenges:
 |---|---|
 | Repeated tool execution | Idempotency |
 | Invalid tool arguments | Schema validation |
+| Unknown or hallucinated tool names | Tool registry allow-list |
 | Infinite agent loops | Maximum iteration limits |
 | Temporary dependency failures | Controlled retries |
 | Database failures | Transaction handling |
 | Unauthorized order access | Customer-scoped queries |
+| Prompt injection | Authorization enforced in backend code, not in the prompt |
 | External API delays | Request timeouts |
 | Debugging agent behavior | Persistent execution traces |
 | Sensitive information exposure | Controlled tool outputs |
@@ -358,6 +381,12 @@ Activate it on Windows:
 
 ```powershell
 .venv\Scripts\Activate.ps1
+```
+
+Activate it on macOS / Linux:
+
+```bash
+source .venv/bin/activate
 ```
 
 ### 3. Install dependencies
@@ -476,6 +505,7 @@ Planned test coverage:
 - Agent execution limits.
 - Database failure handling.
 - Unauthorized access attempts.
+- Prompt-injection attempts to access another customer's data.
 
 Integration tests should use an isolated test database rather than production data.
 
@@ -571,4 +601,3 @@ Rather than treating AI agents as simple chatbot interfaces, this project focuse
 ---
 
 **Status:** Under active development.
-
